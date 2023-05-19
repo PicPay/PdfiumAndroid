@@ -497,6 +497,21 @@ public class PdfiumCore {
     }
 
     /**
+     * Render page fragment on {@link Bitmap}.<br>
+     * Page must be opened before rendering.
+     * <p>
+     * Supported bitmap configurations:
+     * <ul>
+     * <li>ARGB_8888 - best quality, high memory usage, higher possibility of OutOfMemoryError
+     * <li>RGB_565 - little worse quality, twice less memory usage
+     * </ul>
+     */
+    public void renderPageBitmap(PdfDocument doc, Bitmap bitmap, int pageIndex,
+                                 int startX, int startY, int drawSizeX, int drawSizeY) {
+        renderPageBitmap(doc, bitmap, pageIndex, startX, startY, drawSizeX, drawSizeY, false, false);
+    }
+
+    /**
      * Render page fragment on {@link Bitmap}. This method allows to render annotations.<br>
      * Page must be opened before rendering.
      * <p>
